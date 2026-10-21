@@ -9,6 +9,9 @@ const DATA_FILE = path.join(__dirname, "products.json");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 async function readProducts() {
   const data = await fs.readFile(DATA_FILE, "utf8");
